@@ -1,0 +1,13 @@
+@import "/src/main.scss";
+
+#mainHeader {
+    height: 84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        color: $primary;
+        font-family: 'IBM Plex Sans';
+        font-size: 48px;
+    }
+}
