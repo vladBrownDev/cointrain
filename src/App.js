@@ -2,6 +2,7 @@ import './App.scss';
 import React from "react";
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
+import Welcome from './components/Welcome/Welcome';
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,7 +16,7 @@ function App() {
       <Header/>
       <Router>
           <Routes>
-            <Route path="/"></Route>
+            <Route path="/" element={<Welcome />}></Route>
             <Route path='train'>
               <Route path=":currency" element={<Main />} />
             </Route>

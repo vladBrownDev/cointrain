@@ -3,3 +3,10 @@
 $primary: #F3BA2F;
 $secondary: #262626;
 $background: #2d2d2d;
+
+body {
+  background-color: $background;
+}
+* {
+  font-family: 'IBM Plex Sans' ;
+}

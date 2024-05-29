@@ -31,9 +31,6 @@ export const options = {
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-
-
-
 function Main() {
   const [rates, setRates] = useState([])
 
@@ -67,7 +64,9 @@ function Main() {
 
   useEffect(() => {
     fetchChartData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return (
     <main>
       {rates[0] ? <Line options={options} data={data} /> : "loading..."}

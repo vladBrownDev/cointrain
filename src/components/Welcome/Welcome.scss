@@ -1,0 +1,204 @@
+@import "/src/main.scss";
+
+#welcomeMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: sofia-pro, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 100px 0 40px;
+}
+
+h2 {
+  font-weight: 400;
+  margin: 50px 0 10px;
+}
+
+p {
+  margin: 0 0 30px 0;
+  font-size: 18px;
+}
+
+.refresh {
+  padding: 5px;
+  position: absolute;
+  border: 1px dotted white;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.refresh path {
+  fill: white;
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: white;
+  margin: 0;
+}
+
+.menu {
+  filter: drop-shadow(1px 1px 1px #4700b3);
+  width: 300px;
+  color: $primary;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+}
+
+li {
+  color: var(--background);
+  display: block;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+button {
+  -webkit-appearance: button;
+  background: white;
+  color: var(--background);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button path {
+  fill: $primary;
+}
+
+input {
+  accent-color: white;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding-bottom: 50px;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+input[type="number"] {
+  border: 0;
+  border-bottom: 1px dotted white;
+  color: white;
+  margin-left: 10px;
+  background: white;
+  width: 50px;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-bottom: 2px solid white;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.item {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: white;
+  color: white;
+  font-size: 240px;
+  line-height: 260px;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+.coinImg {
+  width: 300px;
+  margin-top: 80px;
+}
+
+.welcomeForm {
+  display: flex;
+}
+
+.dropdownBtn {
+  height: 40px;
+}
+
+.goButton {
+  height: 40px;
+  width: 100px;
+  background-color: $primary;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
