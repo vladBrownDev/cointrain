@@ -1,6 +1,7 @@
 import './Welcome.scss';
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import coin from "../../img/coin.png"
 
 const itemVariants = {
@@ -14,11 +15,27 @@ const itemVariants = {
 
 function Welcome() {
   const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState('');
+  const navigate = useNavigate();
+
+  const nameObject = {
+    'BTC' : 'Bitcoin',
+    'ETH' : 'Etherium',
+    'BNB' : 'BNB'
+  }
+
+  function selectValue(e) {
+    setSelected(e.target.dataset.value);
+  }
+
+  function goToTrain() {
+    navigate('/train/' + selected);
+  }
 
   return (
     <main id='welcomeMain'>
       <motion.img className='coinImg' animate={{ rotateY: '360deg' }}
-        transition={{ duration: 4, repeat: Infinity }} src={coin} />
+        transition={{ duration: 3, delay: 7, repeatDelay: 7, repeat: Infinity }} src={coin} />
       <div className='welcomeForm'>
         <motion.nav
           initial={false}
@@ -30,7 +47,7 @@ function Welcome() {
             onClick={() => setIsOpen(!isOpen)}
             className='dropdownBtn'
           >
-            Choose currency
+            {selected ? nameObject[selected] : 'Choose currency'}
             <motion.div
               variants={{
                 open: { rotate: 180 },
@@ -45,6 +62,9 @@ function Welcome() {
             </motion.div>
           </motion.button>
           <motion.ul
+            className={'dropdownItems'}
+            whileTap={{ scale: 1.1 }}
+            onClick={() => {setIsOpen(false)}}
             variants={{
               open: {
                 clipPath: "inset(0% 0% 0% 0% round 10px)",
@@ -67,14 +87,12 @@ function Welcome() {
             }}
             style={{ pointerEvents: isOpen ? "auto" : "none" }}
           >
-            <motion.li variants={itemVariants}>Item 1 </motion.li>
-            <motion.li variants={itemVariants}>Item 2 </motion.li>
-            <motion.li variants={itemVariants}>Item 3 </motion.li>
-            <motion.li variants={itemVariants}>Item 4 </motion.li>
-            <motion.li variants={itemVariants}>Item 5 </motion.li>
+            <motion.li variants={itemVariants} onClick={selectValue} data-value={"BTC"}>Bitcoin</motion.li>
+            <motion.li variants={itemVariants} onClick={selectValue} data-value={"ETH"}>Etherium</motion.li>
+            <motion.li variants={itemVariants} onClick={selectValue} data-value={"BNB"}>BNB</motion.li>
           </motion.ul>
         </motion.nav>
-        <button className='goButton'>Train</button>
+        <motion.button onClick={goToTrain} className='goButton' whileHover={{ scale: 1.1 }}>Train</motion.button>
       </div>
     </main>
   );

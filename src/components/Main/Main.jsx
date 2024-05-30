@@ -33,11 +33,12 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 function Main() {
   const [rates, setRates] = useState([])
+  const {currency} = useParams();
 
   const data = {
     labels: labels,
     datasets: [{
-      label: '',
+      label: currency,
       data: rates,
       backgroundColor: [
         '#F3BA2F',
@@ -51,14 +52,14 @@ function Main() {
   };
 
   async function fetchChartData(priceArr = []) {
-    const result = await Axios.get('https://api.coinbase.com/v2/exchange-rates?currency=BTC');
+    const result = await Axios.get('https://api.coinbase.com/v2/exchange-rates?currency=' + currency);
     priceArr.push(result.data.data.rates.USD)
 
     if(priceArr.length >= 5) {
       setRates(priceArr);
       return;
     };
-    
+
     setTimeout(() => {fetchChartData(priceArr)}, 10000)
   }
 
