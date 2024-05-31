@@ -2,6 +2,7 @@ import './Main.scss';
 import React, {useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 import Axios  from 'axios';
+import Loading from './Loading.tsx';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,14 +30,13 @@ export const options = {
   responsive: true,
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
 function Main() {
   const [rates, setRates] = useState([])
+  const [times, setTimes] = useState([])
   const {currency} = useParams();
 
   const data = {
-    labels: labels,
+    labels: times,
     datasets: [{
       label: currency,
       data: rates,
@@ -51,16 +51,23 @@ function Main() {
     }]
   };
 
-  async function fetchChartData(priceArr = []) {
+  async function fetchChartData(priceArr = [], timesArr = []) {
     const result = await Axios.get('https://api.coinbase.com/v2/exchange-rates?currency=' + currency);
     priceArr.push(result.data.data.rates.USD)
+    const time = new Date();
+    timesArr.push(
+      String(time.getHours()) + ":" +
+      String(time.getMinutes()) + ":" +
+      String(time.getSeconds())
+    )
 
-    if(priceArr.length >= 5) {
+    if(priceArr.length >= 6) {
       setRates(priceArr);
+      setTimes(timesArr)
       return;
     };
 
-    setTimeout(() => {fetchChartData(priceArr)}, 10000)
+    setTimeout(() => {fetchChartData(priceArr, timesArr)}, 10000)
   }
 
   useEffect(() => {
@@ -70,7 +77,7 @@ function Main() {
 
   return (
     <main>
-      {rates[0] ? <Line options={options} data={data} /> : "loading..."}
+      {rates[0] ? <Line options={options} data={data} /> : <Loading/>}
     </main>
   );
 }

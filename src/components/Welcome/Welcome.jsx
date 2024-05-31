@@ -35,7 +35,7 @@ function Welcome() {
   return (
     <main id='welcomeMain'>
       <motion.img className='coinImg' animate={{ rotateY: '360deg' }}
-        transition={{ duration: 3, delay: 7, repeatDelay: 7, repeat: Infinity }} src={coin} />
+        transition={{ duration: 2, repeatDelay: 5, repeat: Infinity }} src={coin} />
       <div className='welcomeForm'>
         <motion.nav
           initial={false}
@@ -43,7 +43,7 @@ function Welcome() {
           className="menu"
         >
           <motion.button
-            whileTap={{ scale: 0.97 }}
+            whileTap={{ scale: 1.1 }}
             onClick={() => setIsOpen(!isOpen)}
             className='dropdownBtn'
           >
